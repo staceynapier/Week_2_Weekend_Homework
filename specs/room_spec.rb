@@ -36,6 +36,21 @@ class TestRoom < MiniTest::Test
     assert_equal(1, @room1.add_songs(@song1).count)
   end
 
-  p @room1.songs[0].title
+
+
+  def test_too_many_guests
+    
+    @guest1 = Guest.new("John")
+    @guest2 = Guest.new("Keith")
+    @guest3 = Guest.new("Alex")
+    @guest4 = Guest.new("George")
+    
+    @room1.add_guests(@guest1)
+    @room1.add_guests(@guest2)
+    @room1.add_guests(@guest3)
+    @room1.add_guests(@guest4)
+
+    assert_equal("Room full", @room1.too_many_guests)
+  end
 
 end

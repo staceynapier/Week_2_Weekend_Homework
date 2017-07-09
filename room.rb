@@ -11,6 +11,7 @@ attr_accessor :songs, :guests
 
   def add_guests(guest)
     @guests << guest
+      
   end
 
   def remove_guests
@@ -19,6 +20,14 @@ attr_accessor :songs, :guests
 
   def add_songs(song)
     @songs << song
+  end
+
+  def too_many_guests
+    if (@guests.count > 3) 
+      return "Room full"
+    else 
+      return "More people can join"
+    end
   end
 
 end 
