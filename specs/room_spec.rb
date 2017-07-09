@@ -38,11 +38,6 @@ class TestRoom < MiniTest::Test
 
   def test_too_many_guests
     
-    @guest1 = Guest.new("John", 200)
-    @guest2 = Guest.new("Keith", 100)
-    @guest3 = Guest.new("Alex", 30)
-    @guest4 = Guest.new("George", 270)
-    
     @room1.add_guests(@guest1)
     @room1.add_guests(@guest2)
     @room1.add_guests(@guest3)
@@ -54,5 +49,14 @@ class TestRoom < MiniTest::Test
   def test_room_fee
     assert_equal(50, @room1.room_fee)
   end
+
+  def test_room_balance
+    assert_equal(0, @room1.cash_balance)
+  end
+
+  #   def test_guests_cash
+  # #john is paying 50 for the room, started on 150
+  #     assert_equal(100, )
+  #   end
 
 end
