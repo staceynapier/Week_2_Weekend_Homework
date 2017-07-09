@@ -10,13 +10,11 @@ class TestRoom < MiniTest::Test
     @song2 = Song.new("Goldeneye", "Tina Turner")
     @song3 = Song.new("Gold Digger", "Kanye West")
 
-    @guest1 = Guest.new("John")
-    @guest2 = Guest.new("Keith")
-    @guest3 = Guest.new("Alex")
+    @guest1 = Guest.new("John", 150)
+    @guest2 = Guest.new("Keith", 50)
+    @guest3 = Guest.new("Alex", 200)
 
-    
-
-    @room1 = Room.new("Gold room")
+    @room1 = Room.new("Gold room", 50)
   end
 
   def test_room_name
@@ -40,10 +38,10 @@ class TestRoom < MiniTest::Test
 
   def test_too_many_guests
     
-    @guest1 = Guest.new("John")
-    @guest2 = Guest.new("Keith")
-    @guest3 = Guest.new("Alex")
-    @guest4 = Guest.new("George")
+    @guest1 = Guest.new("John", 200)
+    @guest2 = Guest.new("Keith", 100)
+    @guest3 = Guest.new("Alex", 30)
+    @guest4 = Guest.new("George", 270)
     
     @room1.add_guests(@guest1)
     @room1.add_guests(@guest2)
@@ -51,6 +49,10 @@ class TestRoom < MiniTest::Test
     @room1.add_guests(@guest4)
 
     assert_equal("Room full", @room1.too_many_guests)
+  end
+
+  def test_room_fee
+    assert_equal(50, @room1.room_fee)
   end
 
 end
